@@ -13,7 +13,8 @@ chmod +x /bin/badvpn-udpgw;
 clear;
 echo "INSTALANDO...";
 sleep 5;
-echo -e "ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn antcrashudp.sh" >>/etc/autostart;
+echo -e "ps x | grep 'udpvpn' | grep -v 'grep' && echo 'ON' || screen -dmS udpvpn /bin/antcrashvpn.sh" >> /etc/autostart
+#echo -e "ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn antcrashudp.sh" >>/etc/autostart;
 ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn antcrashudp.sh;
 clear;
 echo "BADVPN X INSTALADO COM SUCESSO!";
