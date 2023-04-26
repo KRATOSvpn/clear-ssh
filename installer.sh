@@ -161,7 +161,7 @@ crontab -r >/dev/null 2>&1
 	echo "* * * * * /etc/autostart"
 	echo "*/1 * * * * /root/onlineapp.sh"	
 	echo "* * * * * /root/restartdrop.sh"
-	#echo "0 */6 * * * restartdns"
+	echo "0 */6 * * * restartdns"
 	echo "*/30 * * * * /root/clear_caches.sh"
 	echo "0 */6 * * * /root/system_updates.sh"
 	
@@ -202,7 +202,7 @@ read CONFIRMA
 case $CONFIRMA in 
     "1")
      #NODE
-	 read -p "Insira a porta que deseja usar neste proxy: " PORT
+	 read -p "Insira a porta que deseja usar neste proxy [ Portas ja utilizadas por padrão DROP(8000, 7777), SSL(443, 2053, 2083) ]: " PORT
 	 
     clear;
     echo "Instalando NodeJS...";
@@ -250,8 +250,8 @@ case $CONFIRMA in
     clear;
     wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/wsproxy/sshProxy -O /bin/sshProxy > /dev/null 2>&1
     chmod +x /bin/sshProxy;
-    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS goproxy sshProxy -addr :$PORT -dstAddr 127.0.0.1:22 -custom_handshake "\"200 "\" " >> /etc/autostart;
-    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS goproxy sshProxy -addr :$PORT -dstAddr 127.0.0.1:22 -custom_handshake "200 "
+    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS goproxy sshProxy -addr :$PORT -dstAddr 127.0.0.1:8000 -custom_handshake "\"200 "\" " >> /etc/autostart;
+    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS goproxy sshProxy -addr :$PORT -dstAddr 127.0.0.1:8000 -custom_handshake "200 "
               install_proxy        
     ;;
 
