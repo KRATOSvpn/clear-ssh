@@ -74,6 +74,25 @@ sleep 5;
 apt install apache2 -y;
 cd /etc/apache2 && rm -rf ports.conf;
 wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/onlines-api/ports.conf;
+
+echo "Atualmente o apache esta rodando na porta 8877, deseja alterar esta porta? [s/N]:"
+read EDIT
+
+case $EDIT in 
+    "s")
+     #NODE
+	 read -p "Insira a porta que deseja usar no apache [ Portas ja utilizadas por padrão DROP(8000, 7777), SSL(443, 2053, 2083) ]: " PORTA
+	 
+	 if [[ "$resposta" = '' ]]; then
+	 echo "Você não digitou uma porta válida o apache continuará na porta 8877, você pode alterar depois em /etc/apache2/ports.conf"
+	 sleep 5;
+	 else
+	 sed -i 's/Listen 8877/Listen $PORTA/g' ports.conf
+	 fi
+    ;;
+esac
+
+
 service apache2 restart;
 mkdir /var/www/html/server;
 clear;
