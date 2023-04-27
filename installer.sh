@@ -33,12 +33,14 @@ cd /etc;
 wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/ssh/bannerssh;
 
 echo "Custumizar BannerSSH manualmente [s/N]:"
-read EDIT
+read EDITbanner
 
-case $EDIT in 
+case $EDITbanner in 
     "s")
         read -p "Digite sua msg custumizada para o BannerSSH: (ex: <br> <br> <strong><font color='#D84315'>Olá Mundo</font></strong> <br>)" MSG
         echo  $MSG > /etc/bannerssh
+	service ssh restart > /dev/null 2>&1 && service dropbear restart > /dev/null 2>&1
+        echo -e "\n\033[1;32mBANNER DEFINIDO !\033[0m"
     ;;
     
 
