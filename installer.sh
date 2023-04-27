@@ -31,6 +31,22 @@ echo "Banner SSH...";
 sleep 5
 cd /etc;
 wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/ssh/bannerssh;
+
+echo "Custumizar BannerSSH manualmente [s/N]:"
+read EDIT
+
+case $EDIT in 
+    "s")
+        read -p "Digite sua msg custumizada para o BannerSSH: (ex: <br> <br> <strong><font color='#D84315'>Olá Mundo</font></strong> <br>)" MSG
+        echo  $MSG > /etc/bannerssh
+    ;;
+    
+
+    *)
+        cd /bin && wget https://raw.githubusercontent.com/KRATOSvpn/SSHPLUS-1/main/Modulos/banner && chmod 777 banner && banner;
+    ;;
+esac
+
 cd /root;
 clear;
 echo "Instalando Dropbear...";
