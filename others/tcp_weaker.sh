@@ -47,11 +47,11 @@ echo ""
 sysctl -p /etc/sysctl.conf
 		echo ""
 		echo "As configurações de rede do TCP Tweaker foram adicionadas com sucesso."
-		echo ""
+		echo "Para remover essas configurações basta dar o comando ./tcp_weaker.sh"
 	else
 		echo ""
 		echo "A instalação foi cancelada pelo usuário!"
-		echo ""
+		echo "Para instalar o TCP Tweaker posteriormente basta dar o comando ./tcp_weaker.sh"
 	fi
 fi
-exit
+
