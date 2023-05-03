@@ -32,7 +32,7 @@ sleep 5
 cd /etc;
 wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/ssh/bannerssh;
 
-echo "Custumizar BannerSSH manualmente [s/N]:"
+echo "Custumizar BannerSSH manualmente (se vc selecionar N ira usar o editor de banner do SSHPLUS) [s/N]:"
 read EDITbanner
 
 case $EDITbanner in 
@@ -43,7 +43,6 @@ case $EDITbanner in
         echo -e "\n\033[1;32mBANNER DEFINIDO !\033[0m"
     ;;
     
-
     *)
         cd /bin && wget https://raw.githubusercontent.com/KRATOSvpn/SSHPLUS-1/main/Modulos/banner && chmod 777 banner && banner;
     ;;
@@ -287,8 +286,8 @@ case $CONFIRMA in
     clear;
     wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/wsproxy/sshProxy -O /bin/sshProxy > /dev/null 2>&1
     chmod +x /bin/sshProxy;
-    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS goproxy sshProxy -addr :$PORT -dstAddr 127.0.0.1:8000 -custom_handshake "\"200 "\" " >> /etc/autostart;
-    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS goproxy sshProxy -addr :$PORT -dstAddr 127.0.0.1:8000 -custom_handshake "200 "
+    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS goproxy sshProxy -addr :$PORT -dstAddr 127.0.0.1:7777 -custom_handshake "\"200 "\" " >> /etc/autostart;
+    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS goproxy sshProxy -addr :$PORT -dstAddr 127.0.0.1:7777 -custom_handshake "200 "
               install_proxy        
     ;;
 
