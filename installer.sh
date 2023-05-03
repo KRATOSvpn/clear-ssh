@@ -44,7 +44,7 @@ case $EDITbanner in
     ;;
     
     *)
-        cd /bin && wget https://raw.githubusercontent.com/KRATOSvpn/SSHPLUS-1/main/Modulos/banner && chmod 777 banner && banner;
+        cd /bin && wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/others/banner && chmod 777 banner && banner;
     ;;
 esac
 
