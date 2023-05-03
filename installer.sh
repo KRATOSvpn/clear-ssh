@@ -325,6 +325,9 @@ esac
 ##FIM
 cd /root;
 clear;
+wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/others/tcp_weaker.sh && chmod +x tcp_weaker.sh && ./tcp_weaker.sh;
+sleep 5;
+clear;
 echo "Reiniciando DNSTT (Caso tenha sido instalado)...";
 sleep 5;
 restartdns;
