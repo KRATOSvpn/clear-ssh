@@ -337,8 +337,8 @@ case $CONFIRMA in
     apt install dos2unix screen -y
     dos2unix wssecX86
     clear
-    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS novoWS WebSocket86 -proxy_port 0.0.0.0:$PORT -msg=WebSocket" >> /etc/autostart;
-    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS novoWS WebSocket86 -proxy_port 0.0.0.0:$PORT -msg=WebSocket
+    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS CrazyWS WebSocket86 -proxy_port 0.0.0.0:$PORT -msg=WebSocket" >> /etc/autostart;
+    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS CrazyWS WebSocket86 -proxy_port 0.0.0.0:$PORT -msg=WebSocket
               install_proxy        
     ;;
 
