@@ -32,7 +32,7 @@ sleep 5
 cd /etc;
 wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/ssh/bannerssh;
 
-echo "Custumizar BannerSSH manualmente (se vc selecionar N ira usar o editor de banner do SSHPLUS) [s/N]:"
+echo "Custumizar BannerSSH manualmente (se vc selecionar N ira usar o editor de banner do SSHPLUS) [s/n]:"
 read EDITbanner
 
 case $EDITbanner in 
@@ -43,8 +43,14 @@ case $EDITbanner in
         echo -e "\n\033[1;32mBANNER DEFINIDO !\033[0m"
     ;;
     
-    *)
+    "n")
         cd /bin && wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/others/banner && chmod 777 banner && banner;
+    ;;
+    "N")
+        cd /bin && wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/others/banner && chmod 777 banner && banner;
+    ;;
+    *)
+        echo  "Opção inválida."
     ;;
 esac
 
@@ -232,7 +238,13 @@ function install_qual_proxy(){
 
 
 sleep 5;
-echo "Deseja instalar o proxy NODE [status 101] (1), PYTHON [status 101] (2) ou GO [status 200 OK] (3)? (1,2 ou 3)"
+echo "Qual proxy você deseja instalar?"
+echo "proxy NODE [Status 101] (1)"
+echo "PYTHON [Status 200] (2)"
+echo "GO [Status 101 OK] (3)"
+echo "Proxy DT [Status 101] (4)"
+echo "Proxy X86 Crazy [Status 101] (5)"
+echo "? (1,2,3,4 ou 5)"
 read CONFIRMA
 
 case $CONFIRMA in 
@@ -288,6 +300,45 @@ case $CONFIRMA in
     chmod +x /bin/sshProxy;
     echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS goproxy sshProxy -addr :$PORT -dstAddr 127.0.0.1:7777 -custom_handshake "\"200 "\" " >> /etc/autostart;
     netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS goproxy sshProxy -addr :$PORT -dstAddr 127.0.0.1:7777 -custom_handshake "200 "
+              install_proxy        
+    ;;
+    "4")
+    #proxygo
+	 read -p "Insira a porta que deseja usar neste proxy: " PORT
+	 
+    cd /root;
+    clear;
+    echo "Instalando Proxy DT...";
+    sleep 5; 
+    clear;
+    rm -f /usr/bin/proxy
+    curl -s -L -o /usr/bin/proxy https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/wsproxy/proxyDT
+    chmod +x /usr/bin/proxy
+    clear
+    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS proxyDT /usr/bin/proxy --port $PORT --http --ssh-only --response WebSocket" >> /etc/autostart;
+    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS proxyDT /usr/bin/proxy --port $PORT --http --ssh-only --response WebSocket
+              install_proxy        
+    ;;
+    "5")
+    #proxygo
+	 read -p "Insira a porta que deseja usar neste proxy: " PORT
+	 
+    cd /root;
+    clear;
+    echo "Instalando Proxy X86 Crazy...";
+    sleep 5; 
+    clear;
+    curl -s -L -o WebSocket86.zip https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/wsproxy/WebSocket86.zip
+    curl -s -L -o wssecX86 https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/wsproxy/wssecX86
+    apt install unzip -y
+    unzip WebSocket86.zip
+    rm WebSocket86.zip
+    chmod +x wssecX86 WebSocket86
+    apt install dos2unix screen -y
+    dos2unix wssecX86
+    clear
+    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS novoWS WebSocket86 -proxy_port 0.0.0.0:$PORT -msg=WebSocket" >> /etc/autostart;
+    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS novoWS WebSocket86 -proxy_port 0.0.0.0:$PORT -msg=WebSocket
               install_proxy        
     ;;
 
