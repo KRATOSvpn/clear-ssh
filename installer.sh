@@ -229,9 +229,7 @@ echo ""
 	if [[ "$resposta" = 's' ]]; then
 	
 	install_qual_proxy
-	elif [[ "$resposta" = 'S' ]]; then
-    
-	install_qual_proxy
+	
 	fi
 }
 
