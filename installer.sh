@@ -303,7 +303,7 @@ case $CONFIRMA in
               install_proxy        
     ;;
     "4")
-    #proxygo
+    #proxyDT
 	 read -p "Insira a porta que deseja usar neste proxy: " PORT
 	 
     cd /root;
@@ -320,7 +320,7 @@ case $CONFIRMA in
               install_proxy        
     ;;
     "5")
-    #proxygo
+    #proxyX86Crazy
 	 read -p "Insira a porta que deseja usar neste proxy: " PORT
 	 
     cd /root;
