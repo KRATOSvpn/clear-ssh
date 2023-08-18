@@ -332,11 +332,11 @@ case $CONFIRMA in
     mkdir /etc/SSHPlus/
     cd /etc/SSHPlus/ && wget https://www.dropbox.com/s/muh8otpcjb9qa6d/WebSocket && wget https://www.dropbox.com/s/zv01bftfjj58wt8/pub.key && wget https://www.dropbox.com/s/pj5s9x23boj840q/priv.pem && chmod 777 WebSocket && cd $HOME
     #curl -s -L -o WebSocket86.zip https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/wsproxy/WebSocket86.zip
-    apt install unzip -y
-    unzip WebSocket86.zip
-    rm WebSocket86.zip
-    chmod +x WebSocket86
-    apt install dos2unix screen -y
+    #apt install unzip -y
+    #unzip WebSocket86.zip
+    #rm WebSocket86.zip
+    #chmod +x WebSocket86
+    #apt install dos2unix screen -y
     clear
     echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS novoWS /etc/SSHPlus/WebSocket -proxy_port 0.0.0.0:$PORT -msg="\"WebSocket"\"" >> /etc/autostart;
     netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS novoWS /etc/SSHPlus/WebSocket -proxy_port 0.0.0.0:$PORT -msg="WebSocket"
