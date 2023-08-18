@@ -229,7 +229,9 @@ echo ""
 	if [[ "$resposta" = 's' ]]; then
 	
 	install_qual_proxy
-	
+	elif [[ "$resposta" = 'S' ]]; then
+    
+	install_qual_proxy
 	fi
 }
 
@@ -239,12 +241,11 @@ function install_qual_proxy(){
 
 sleep 5;
 echo "Qual proxy você deseja instalar?"
-echo "proxy NODE [Status 101] (1)"
-echo "PYTHON [Status 200] (2)"
-echo "GO [Status 101 OK] (3)"
-echo "Proxy DT [Status 101] (4)"
-echo "Proxy X86 Crazy [Status 101] (5)"
-echo "? (1,2,3,4 ou 5)"
+echo "1) proxy NODE [Status 101]"
+echo "2) PYTHON [Status 200]"
+echo "3) GO [Status 101 OK]"
+echo "4) Proxy DT [Status 101]"
+echo "5) Proxy X86 Crazy [Status 101]"
 read CONFIRMA
 
 case $CONFIRMA in 
@@ -303,7 +304,7 @@ case $CONFIRMA in
               install_proxy        
     ;;
     "4")
-    #proxyDT
+    #proxygo
 	 read -p "Insira a porta que deseja usar neste proxy: " PORT
 	 
     cd /root;
@@ -315,12 +316,12 @@ case $CONFIRMA in
     curl -s -L -o /usr/bin/proxy https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/wsproxy/proxyDT
     chmod +x /usr/bin/proxy
     clear
-    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS proxyDT /usr/bin/proxy --port $PORT --http --ssh-only --response WebSocket" >> /etc/autostart;
-    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS proxyDT /usr/bin/proxy --port $PORT --http --ssh-only --response WebSocket
+    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS proxyDT /usr/bin/proxy --port $PORT --http --ssh-only --response "\"WebSocket"\"" >> /etc/autostart;
+    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS proxyDT /usr/bin/proxy --port $PORT --http --ssh-only --response "WebSocket"
               install_proxy        
     ;;
     "5")
-    #proxyX86Crazy
+    #proxygo
 	 read -p "Insira a porta que deseja usar neste proxy: " PORT
 	 
     cd /root;
@@ -329,16 +330,14 @@ case $CONFIRMA in
     sleep 5; 
     clear;
     curl -s -L -o WebSocket86.zip https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/wsproxy/WebSocket86.zip
-    curl -s -L -o wssecX86 https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/wsproxy/wssecX86
     apt install unzip -y
     unzip WebSocket86.zip
     rm WebSocket86.zip
-    chmod +x wssecX86 WebSocket86
+    chmod +x WebSocket86
     apt install dos2unix screen -y
-    dos2unix wssecX86
     clear
-    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS CrazyWS WebSocket86 -proxy_port 0.0.0.0:$PORT -msg=WebSocket" >> /etc/autostart;
-    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS CrazyWS WebSocket86 -proxy_port 0.0.0.0:$PORT -msg=WebSocket
+    echo -e "netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS novoWS WebSocket86 -proxy_port 0.0.0.0:$PORT -msg="\"WebSocket"\"" >> /etc/autostart;
+    netstat -tlpn | grep -w $PORT > /dev/null || screen -dmS novoWS WebSocket86 -proxy_port 0.0.0.0:$PORT -msg="WebSocket"
               install_proxy        
     ;;
 
