@@ -15,18 +15,18 @@ clear;
 apt install screen iptables cron curl certbot git screen htop net-tools nload speedtest-cli ipset unattended-upgrades whois -y;
 apt install dos2unix -y && apt install unzip && wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/sync/sync.zip && unzip sync.zip && chmod +x *.sh && dos2unix *.sh && rm -rf sync.zip;
 clear;
-echo "Instalando DKMS (Anti-torrent)...";
-apt purge xtables* -y;
-apt install make -y;
-apt install dkms -y;
-apt install linux-headers-$(uname -r);
-cd /root;
-wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/iptables/xtables-addons-common_3.18-1_amd64.deb;
-wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/iptables/xtables-addons-dkms_3.18-1_all.deb;
-dpkg -i *.deb;
-apt --fix-broken install;
-rm -rf *.deb;
-clear;
+#echo "Instalando DKMS (Anti-torrent)...";
+#apt purge xtables* -y;
+#apt install make -y;
+#apt install dkms -y;
+#apt install linux-headers-$(uname -r);
+#cd /root;
+#wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/iptables/xtables-addons-common_3.18-1_amd64.deb;
+#wget https://raw.githubusercontent.com/KRATOSvpn/clear-ssh/main/iptables/xtables-addons-dkms_3.18-1_all.deb;
+#dpkg -i *.deb;
+#apt --fix-broken install;
+#rm -rf *.deb;
+#clear;
 echo "Banner SSH...";
 sleep 5
 cd /etc;
@@ -237,13 +237,15 @@ echo ""
 function install_qual_proxy(){
 
 
-sleep 5;
+sleep 1;
 echo "Qual proxy você deseja instalar?"
 echo "1) proxy NODE [Status 101]"
 echo "2) PYTHON [Status 200]"
 echo "3) GO [Status 101 OK]"
 echo "4) Proxy DT [Status 101]"
 echo "5) Proxy X86 Crazy [Status 101]"
+echo ""
+echo ""
 read CONFIRMA
 
 case $CONFIRMA in 
